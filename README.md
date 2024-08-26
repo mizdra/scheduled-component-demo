@@ -30,7 +30,7 @@ The following is the implementation:
 // Use `server-only` to prevent this component from being included in the client bundle
 import 'server-only'
 
-export function ScheduledComponent ({showAt, children}: {
+export function ScheduledComponent({showAt, children}: {
   showAt: Date;
   children: React.ReactNode;
 }) {
