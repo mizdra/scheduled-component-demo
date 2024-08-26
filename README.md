@@ -1,7 +1,61 @@
 # scheduled-component-demo
 
+The demo of `<ScheduledComponent>` implementation with React Server Components.
+
+## How to start demo
+
 ```bash
 npm i
 npm run dev
 open http://localhost:3000
+```
+
+## What is `<ScheduledComponent>`?
+
+`<ScheduledComponent>` is a component that can be scheduled to render at a specific time. Nothing is displayed to the user until that time, but at the specified time, the component is displayed.
+
+`<ScheduledComponent>` is used to display secret campaign information, etc.
+
+## Why use React Server Components?
+
+The source codes of all Client Components is leaked to the user. Therefore, using Client Components to implement `<ScheduledComponent>` will leak secret campaign information to the user.
+
+On the other hand, the source code of React Server Components is not leaked to the user. Therefore, you can hide the secret campaign information until it expires.
+
+## The implementation of `<ScheduledComponent>`
+
+The following is the implementation:
+
+```tsx
+import 'server-only'
+
+export function ScheduledComponent ({showAt, children}: {
+  showAt: Date;
+  children: React.ReactNode;
+}) {
+  if (new Date() < showAt) {
+    return null;
+  } else {
+    return children;
+  }
+}
+```
+
+Use it as follows:
+
+```tsx
+import { ScheduledComponent } from "@/components/ScheduledComponent";
+
+export default function Home() {
+  return (
+    <main>
+      <ScheduledComponent showAt={new Date("2024-01-01")}>
+        <h1>Happy New Year!</h1>
+      </ScheduledComponent>
+      <ScheduledComponent showAt={new Date("2024-12-25")}>
+        <h1>Merry Christmas!</h1>
+      </ScheduledComponent>
+    </main>
+  );
+}
 ```
