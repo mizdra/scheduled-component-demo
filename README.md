@@ -60,3 +60,7 @@ export default function Home() {
   );
 }
 ```
+
+## License
+
+CC0-1.0
