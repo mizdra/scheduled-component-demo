@@ -18,7 +18,7 @@ open http://localhost:3000
 
 ## Why use React Server Components?
 
-The source codes of all Client Components is leaked to the user. Therefore, using Client Components to implement `<ScheduledComponent>` will leak secret campaign information to the user.
+The source code for all client components is included in the client bundle. Therefore, using Client Components to implement `<ScheduledComponent>` will leak secret campaign information to the user.
 
 On the other hand, the source code of React Server Components is not leaked to the user. Therefore, you can hide the secret campaign information until the date of publication.
 
