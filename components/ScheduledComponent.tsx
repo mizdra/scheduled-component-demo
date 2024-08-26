@@ -1,3 +1,4 @@
+// Use `server-only` to prevent this component from being included in the client bundle
 import 'server-only'
 
 export function ScheduledComponent ({showAt, children}: {
