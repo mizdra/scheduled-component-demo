@@ -8,6 +8,7 @@ The demo of `<ScheduledComponent>` implementation with React Server Components.
 npm i
 npm run dev
 open http://localhost:3000
+open http://localhost:3000/client-component-leak-test
 ```
 
 ## What is `<ScheduledComponent>`?
